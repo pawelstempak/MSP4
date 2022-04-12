@@ -1,0 +1,15 @@
+{
+    "name": "user/htdocs",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "Paweł Stempak",
+            "email": "pawelstempak@gmail.com"
+        }
+    ],
+    "require": {}
+}
