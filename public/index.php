@@ -12,8 +12,6 @@ $app->router->get('/', function(){
     return 'Hello World!'; 
 });
 
-$app->router->get('/contact', function(){
-    return 'Contact!'; 
-});
+$app->router->get('/contact', 'contact');
 
 $app->run();
