@@ -6,11 +6,9 @@ use app\core\Application;
 use app\core\Router;
 use app\core\Request;
 
-$app = new Application();
+$app = new Application(dirname(__DIR__));
 
-$app->router->get('/', function(){
-    return 'Hello World!'; 
-});
+$app->router->get('/', 'home');
 
 $app->router->get('/contact', 'contact');
 
