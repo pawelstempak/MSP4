@@ -10,7 +10,7 @@
 
     <title>Hello, world!</title>
   </head>
-  <body style="padding:0 20% 0 20%">
+  <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
@@ -48,7 +48,9 @@
     </div>
     </nav>      
     
-    {{content}}
+    <div class="container">
+      {{content}}
+    </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 

@@ -32,14 +32,14 @@ class Router
         if($callback === false) 
         {
             $this->response->setStatusCode(404);
-            return $this->renderContent('Not found this');
+            return $this->renderView('_404');
         }       
 
         if(is_string($callback))
         {
             return $this->renderView($callback);
         }
-        return call_user_func($callback);
+        return call_user_func($callback, $this->request);
     }
 
     protected function layoutContent()
@@ -63,9 +63,9 @@ class Router
         return ob_get_clean();
     }
 
-    public function renderContent($viewContent)
-    {
-        $layoutContent = $this->layoutContent();
-        return str_replace('{{content}}', $viewContent, $layoutContent);
-    }
+    // public function renderContent($viewContent)
+    // {
+    //     $layoutContent = $this->layoutContent();
+    //     return str_replace('{{content}}', $viewContent, $layoutContent);
+    // }
 }
