@@ -10,7 +10,7 @@
 
     <title>Hello, world!</title>
   </head>
-  <body>
+  <body style="padding:0 20% 0 20%">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
