@@ -27,45 +27,54 @@ class Router
     public function resolve()
     {
         $path = $this->request->getPath();
-        $method = $this->request->getMethod();  
+        $method = $this->request->Method();  
         $callback = $this->routes[$method][$path] ?? false;
         if($callback === false) 
         {
             $this->response->setStatusCode(404);
-            return $this->renderView('_404');
+            return $this->renderView('_404', $params);
         }       
 
         if(is_string($callback))
         {
-            return $this->renderView($callback);
+            return $this->renderView($callback, $params);
+        }
+        if(is_array($callback))
+        {
+            Application::$core->controller = new $callback[0]();
+            $callback[0] = Application::$core->controller;
         }
         return call_user_func($callback, $this->request);
     }
 
     protected function layoutContent()
     {
+        $layout = Application::$core->controller->layout;
         ob_start();
-        include_once Application::$ROOT_DIR . "/views/layouts/main.php";
+        include_once Application::$ROOT_DIR . "/views/layouts/$layout.php";
         return ob_get_clean();
     }
     
-    public function renderView($view)
+    protected function renderOnlyView($view, $params = [])
     {
-        $layoutContent = $this->layoutContent();
-        $viewContent = $this->renderOnlyView($view);
-        return str_replace('{{content}}', $viewContent, $layoutContent);
-    }
-    
-    protected function renderOnlyView($view)
-    {
+        foreach($params as $key => $value) {
+            $$key = $value; //double $ sign meaning that the value of $key, some string ex. 'email' is automaticaly a name of new variable $email
+        }
         ob_start();
         include_once Application::$ROOT_DIR . "/views/$view.php";
         return ob_get_clean();
     }
 
-    // public function renderContent($viewContent)
-    // {
-    //     $layoutContent = $this->layoutContent();
-    //     return str_replace('{{content}}', $viewContent, $layoutContent);
-    // }
+    public function renderView($view, $params = [])
+    {
+        $layoutContent = $this->layoutContent();
+        $viewContent = $this->renderOnlyView($view, $params);
+        return str_replace('{{content}}', $viewContent, $layoutContent);
+    }
+
+    public function renderContent($viewContent)
+    {
+        $layoutContent = $this->layoutContent();
+        return str_replace('{{content}}', $viewContent, $layoutContent);
+    }
 }

@@ -15,22 +15,32 @@ class Request
         return substr($path, 0, $position);
     }
 
-    public function getMethod()
+    public function Method()
     {
         return strtolower($_SERVER['REQUEST_METHOD']);
+    }    
+
+    public function isGet()
+    {
+        return $this->Method() === 'get';
+    }
+
+    public function isPost()
+    {
+        return $this->Method() === 'post';
     }    
 
     public function getBody()
     {
         $body = [];
-        if($this->getMethod() === 'get')
+        if($this->Method() === 'get')
         {
             foreach($_GET as $key => $value)
             {
                 $body[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
             }
         }
-        if($this->getMethod() === 'post')
+        if($this->Method() === 'post')
         {
             foreach($_POST as $key => $value)
             {
