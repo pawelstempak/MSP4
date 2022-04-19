@@ -19,13 +19,16 @@ class AuthController extends Controller
         {
             $registerModel->loadData($request->getBody());
 
-            var_dump($registerModel);
-
-            if($registerModel->validate() && $regiterModel->register())
+            if($registerModel->validate() && $registerModel->register())
             {
                 return 'Success';
             }
             
+            // echo "<pre>";
+            // var_dump($registerModel->errors);
+            // echo "</pre>";
+            // exit;
+
             // $firstname = $request->getBody()['firstname'];
             // if(!$firstname)
             // {

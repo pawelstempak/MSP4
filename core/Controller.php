@@ -4,8 +4,8 @@ namespace app\core;
 
 class Controller 
 {
-    public string $layout;
-    public function setLayout($layout = 'main')
+    public string $layout = 'main';
+    public function setLayout($layout)
     {
         $this->layout = $layout;
     }
