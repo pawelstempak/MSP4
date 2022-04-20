@@ -8,12 +8,18 @@ use app\controllers\AuthController;
 use app\core\Application;
 
 $app = new Application(dirname(__DIR__)); 
-$app->router->get('/', [SiteController::class, 'home']);
-$app->router->get('/contact', [SiteController::class, 'contact']);
-$app->router->post('/contact', [SiteController::class, 'handleContact']); //run handleContent method SiteController class
-$app->router->get('/login', [AuthController::class, 'login']);
-$app->router->post('/login', [AuthController::class, 'login']);
-$app->router->get('/register', [AuthController::class, 'register']);
-$app->router->post('/register', [AuthController::class, 'register']);
+if($app->isAuth())
+{
+    $app->router->get('/', [SiteController::class, 'home']);
+}
+else
+{
+    $app->router->get('/', [AuthController::class, 'login']);
+    $app->router->post('/', [AuthController::class, 'login']);
+    $app->router->get('/register', [AuthController::class, 'register']);
+    $app->router->post('/register', [AuthController::class, 'register']);
+    $app->router->get('/contact', [SiteController::class, 'contact']);
+    $app->router->post('/contact', [SiteController::class, 'handleContact']);    
+}
 
 $app->run();

@@ -11,6 +11,7 @@ class Application
     public Response $response;
     public static Application $core;
     public Controller $controller;
+    public Auth $auth;
 
     public function __construct($rootPath)
     {
@@ -21,6 +22,7 @@ class Application
         $this->request = new Request();
         $this->response = new Response();
         $this->router = new Router($this->request, $this->response);
+        $this->auth = new Auth();
     }
 
     public function run()
@@ -36,5 +38,10 @@ class Application
     public function setController(Controller $controller)
     {
         $this->controller = $controller;
+    }
+
+    public function isAuth()
+    {
+        return $this->auth->Authorization();
     }
 }
