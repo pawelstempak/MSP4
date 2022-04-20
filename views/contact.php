@@ -1,3 +1,5 @@
+<?php /* views/contact.php */ ?>
+
 <h1>Contact us</h1>
 <form action="" method="post">
   <div class="mb-3">

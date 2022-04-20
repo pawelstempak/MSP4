@@ -1,4 +1,6 @@
 <?php
+/* core/Response.php */
+
 namespace app\core;
 class Response
 {

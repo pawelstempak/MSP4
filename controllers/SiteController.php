@@ -1,4 +1,5 @@
 <?php
+/* controllers/SiteController.php */
 
 namespace app\controllers;
 use app\core\Controller;

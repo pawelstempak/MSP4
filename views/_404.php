@@ -1,5 +1,3 @@
-<?php
+<?php /* views/_404.php */ ?>
 
-?>
-
-<h1>NOt found</h1>
+<h1>Not found</h1>

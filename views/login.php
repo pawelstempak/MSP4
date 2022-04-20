@@ -1,3 +1,4 @@
+<?php /* views/login.php */ ?>
 <h1>Login form</h1>
 <form action="" method="post">
   <div class="mb-3">

@@ -1,3 +1,4 @@
+<?php /* views/register.php */ ?>
 <h1>Create ana account</h1>
 <?php $form = app\core\form\Form::begin('','post') ?>
 <?php echo $form->field($model, 'firstname') ?>
