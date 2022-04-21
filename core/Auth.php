@@ -1,6 +1,7 @@
 <?php
 
 namespace app\core;
+use Dotenv\Dotenv;
 
 class Auth
 {
@@ -13,13 +14,20 @@ class Auth
     public function __construct()
     {
         $_SESSION ?? session_start();
+    }
+
+    public function Auth()
+    {
         $this->email = $_SESSION['email'] ?? '';
         $this->id_hash = $_SESSION['id_hash'] ?? '';
         $this->expire = $_SESSION['expire'] ?? '';
+        return sha1($this->email.self::HIDDEN_HASH_VAR)==$this->id_hash and $this->expire>time();
     }
 
-    public function Authorization()
+    public function SignIn()
     {
-        return sha1($this->email.self::HIDDEN_HASH_VAR)==$this->id_hash and $this->expire>time();
+        $env = Dotenv::createImmutable(__DIR__ . '/..');
+        $env->load();
+        return $_ENV;
     }
 }

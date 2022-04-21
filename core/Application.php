@@ -42,6 +42,8 @@ class Application
 
     public function isAuth()
     {
-        return $this->auth->Authorization();
+        return $this->auth->Auth();
     }
+
+    //echo $this->auth->SignIn();
 }
