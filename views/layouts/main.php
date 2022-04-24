@@ -9,70 +9,81 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
+    <link href="css/sidebar.css" rel="stylesheet">
+    <title>Mailing Service Panel</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link" href="/contact">Contact</a>
-              </li>
-              <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
-              </li>
-          </ul>
-          <ul class="navbar-nav ml-auto mb-2 mb-lg-0 d-flex">
-            <?php if($is_signedin) { ?>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/logout">Login</a>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+          <div class="flex-shrink-0 p-3 bg-white">
+          <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+            <img src="images/logo.png" class="bi me-2" width="30" height="30" />
+            <span class="fs-5 fw-semibold">Mailing Service Panel</span>
+          </a>
+          <ul class="list-unstyled ps-0">
+            <li class="mb-1">
+              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                Home
+              </button>
+              <div class="collapse show" id="home-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="/" class="link-dark rounded">Dashboard</a></li>
+                  <li><a href="#" class="link-dark rounded">Updates</a></li>
+                  <li><a href="#" class="link-dark rounded">Reports</a></li>
+                </ul>
+              </div>
             </li>
-            <?php } else { ?>
-              <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/login">Login</a>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link" href="/register">Register</a>
-              </li>
-            <?php } ?>
-          </ul>        
+            <li class="mb-1">
+              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                Dashboard
+              </button>
+              <div class="collapse" id="dashboard-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="#" class="link-dark rounded">Overview</a></li>
+                  <li><a href="#" class="link-dark rounded">Weekly</a></li>
+                  <li><a href="#" class="link-dark rounded">Monthly</a></li>
+                  <li><a href="#" class="link-dark rounded">Annually</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="mb-1">
+              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                Orders
+              </button>
+              <div class="collapse" id="orders-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="#" class="link-dark rounded">New</a></li>
+                  <li><a href="#" class="link-dark rounded">Processed</a></li>
+                  <li><a href="#" class="link-dark rounded">Shipped</a></li>
+                  <li><a href="#" class="link-dark rounded">Returned</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="border-top my-3"></li>
+            <li class="mb-1">
+              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+                Account
+              </button>
+              <div class="collapse" id="account-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="#" class="link-dark rounded">New...</a></li>
+                  <li><a href="#" class="link-dark rounded">Profile</a></li>
+                  <li><a href="#" class="link-dark rounded">Settings</a></li>
+                  <li><a href="/logout" class="link-dark rounded">Sign out</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
         </div>
+      </div>
+      <div class="col-9">
+        {{content}}
+      </div>
     </div>
-    </nav>      
-    
-    <div class="container">
-      {{content}}
-    </div>
-
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    -->
+  </div>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
   </body>
 </html>

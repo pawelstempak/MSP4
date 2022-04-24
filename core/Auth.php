@@ -1,19 +1,19 @@
 <?php
 
 namespace app\core;
+use Dotenv\Dotenv;
 use app\core\Database;
 
 class Auth
 {
-    public const HIDDEN_HASH_VAR = '76y32rghfb72380g3287b239fbn23fb3278';
-    public const SESSION_LIFE_TIME = '300';
-
     public $email;
     public $id_hash;
     public $expire;
 
     public function __construct()
     {
+        $this->cred = Dotenv::createImmutable(__DIR__ . '/..');
+        $this->cred->load();        
         $_SESSION ?? session_start();
     }
 
@@ -22,13 +22,13 @@ class Auth
         $this->email = $_SESSION['email'] ?? '';
         $this->id_hash = $_SESSION['id_hash'] ?? '';
         $this->expire = $_SESSION['expire'] ?? '';
-        return sha1($this->email.self::HIDDEN_HASH_VAR)==$this->id_hash and $this->expire>time();
+        return sha1($this->email.$_ENV['HIDDEN_HASH_VAR'])==$this->id_hash and $this->expire>time();
     }
 
     public function SetSession($post_email,$session_life_time)
     {
         $post_email=strtolower($post_email);
-		$id_hash= sha1($post_email.self::HIDDEN_HASH_VAR);
+		$id_hash= sha1($post_email.$_ENV['HIDDEN_HASH_VAR']);
 		$_SESSION['email'] = $post_email;
 		$_SESSION['id_hash'] = $id_hash;
 		$_SESSION['expire'] = time()+$session_life_time;
@@ -51,7 +51,7 @@ class Auth
         ));
         if($db_request->fetch())
         {
-            $this->SetSession($getBody['email'],self::SESSION_LIFE_TIME);
+            $this->SetSession($getBody['email'],$_ENV['SESSION_LIFE_TIME']);
             $this->Auth();
         }
 
