@@ -4,9 +4,17 @@
 namespace app\controllers;
 use app\core\Controller;
 use app\core\Request;
+use app\core\Auth;
 
 class SiteController extends Controller
 {
+    public function logout()
+    {
+        $user = new Auth();
+        $user->SignOut();
+        header('Location: /');       
+    }
+
     public function home()
     {   
         $params = [

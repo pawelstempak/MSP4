@@ -11,6 +11,7 @@ $app = new Application(dirname(__DIR__));
 if($app->isAuth())
 {
     $app->router->get('/', [SiteController::class, 'home']);
+    $app->router->get('/logout', [SiteController::class, 'logout']);
 }
 else
 {

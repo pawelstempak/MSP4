@@ -43,12 +43,18 @@
               </li>
           </ul>
           <ul class="navbar-nav ml-auto mb-2 mb-lg-0 d-flex">
+            <?php if($is_signedin) { ?>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/logout">Login</a>
+            </li>
+            <?php } else { ?>
               <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/login">Login</a>
               </li>
               <li class="nav-item">
               <a class="nav-link" href="/register">Register</a>
               </li>
+            <?php } ?>
           </ul>        
         </div>
     </div>

@@ -44,6 +44,4 @@ class Application
     {
         return $this->auth->Auth();
     }
-
-    //echo $this->auth->SignIn();
 }

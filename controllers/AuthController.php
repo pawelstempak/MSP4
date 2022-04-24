@@ -5,11 +5,19 @@ namespace app\controllers;
 use app\core\Controller;
 use app\core\Request;
 use app\models\RegisterModel;
+use app\core\Auth;
 
 class AuthController extends Controller
 {
-    public function login()
+    public function login(Request $request)
     {
+        if($request->isPost())
+        {
+            $user = new Auth();
+            $user->SignIn($request->getBody());
+            header('Location: /');    
+        }
+
         $this->setLayout('auth');
         return $this->render('login');
     }
