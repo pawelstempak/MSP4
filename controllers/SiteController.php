@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\core\Controller;
 use app\core\Request;
 use app\core\Auth;
+use app\models\SendersListModel;
 
 class SiteController extends Controller
 {
@@ -14,6 +15,17 @@ class SiteController extends Controller
         $user->SignOut();
         header('Location: /');       
     }
+
+    public function senderslist()
+    {   
+        $senderslist = new SendersListModel();
+        $senderslist->SendSendersList();
+        $params = [
+            'name' => 'Ocotpus Site'
+        ];
+        return $this->render('senderslist', $params);
+    }
+
 
     public function home()
     {   

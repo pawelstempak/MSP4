@@ -12,15 +12,16 @@ if($app->isAuth())
 {
     $app->router->get('/', [SiteController::class, 'home']);
     $app->router->get('/logout', [SiteController::class, 'logout']);
+    $app->router->get('/senderslist', [SiteController::class, 'senderslist']);
 }
 else
 {
     $app->router->get('/', [AuthController::class, 'login']);
     $app->router->post('/', [AuthController::class, 'login']);
-    $app->router->get('/register', [AuthController::class, 'register']);
-    $app->router->post('/register', [AuthController::class, 'register']);
-    $app->router->get('/contact', [SiteController::class, 'contact']);
-    $app->router->post('/contact', [SiteController::class, 'handleContact']);    
 }
+$app->router->get('/register', [AuthController::class, 'register']);
+$app->router->post('/register', [AuthController::class, 'register']);
+$app->router->get('/contact', [SiteController::class, 'contact']);
+$app->router->post('/contact', [SiteController::class, 'handleContact']);    
 
 $app->run();

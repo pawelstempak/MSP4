@@ -50,14 +50,12 @@
             </li>
             <li class="mb-1">
               <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-                Orders
+                Sender
               </button>
               <div class="collapse" id="orders-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                  <li><a href="#" class="link-dark rounded">New</a></li>
-                  <li><a href="#" class="link-dark rounded">Processed</a></li>
-                  <li><a href="#" class="link-dark rounded">Shipped</a></li>
-                  <li><a href="#" class="link-dark rounded">Returned</a></li>
+                  <li><a href="newsender" class="link-dark rounded">New</a></li>
+                  <li><a href="senderslist" class="link-dark rounded">List</a></li>
                 </ul>
               </div>
             </li>
@@ -68,9 +66,8 @@
               </button>
               <div class="collapse" id="account-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                  <li><a href="#" class="link-dark rounded">New...</a></li>
-                  <li><a href="#" class="link-dark rounded">Profile</a></li>
-                  <li><a href="#" class="link-dark rounded">Settings</a></li>
+                  <li><a href="profile" class="link-dark rounded">Profile</a></li>
+                  <li><a href="settings" class="link-dark rounded">Settings</a></li>
                   <li><a href="/logout" class="link-dark rounded">Sign out</a></li>
                 </ul>
               </div>
