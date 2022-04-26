@@ -1,8 +1,7 @@
 <?php
 
 namespace app\core;
-use Dotenv\Dotenv;
-use app\core\Database;
+use \PDO;
 
 class Auth
 {
@@ -12,8 +11,6 @@ class Auth
 
     public function __construct()
     {
-        $this->cred = Dotenv::createImmutable(__DIR__ . '/..');
-        $this->cred->load();        
         $_SESSION ?? session_start();
     }
 
@@ -34,12 +31,8 @@ class Auth
 		$_SESSION['expire'] = time()+$session_life_time;
     }
 
-    private $con;
-
     public function SignIn($getBody)
     {
-        $this->con = new Database();
-            
         $db_request = $this->con->pdo->prepare('
                                     SELECT id, name, lastname, email, password 
                                     FROM users
