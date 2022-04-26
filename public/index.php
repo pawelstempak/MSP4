@@ -1,11 +1,15 @@
 <?php
 /* public/index.php */
 
-require_once __DIR__ . '/../vendor/autoload.php';
-
+use Dotenv\Dotenv;
+use app\core\Application;
 use app\controllers\SiteController;
 use app\controllers\AuthController;
-use app\core\Application;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$dotenv = Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
 
 $app = new Application(dirname(__DIR__)); 
 if($app->isAuth())

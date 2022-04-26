@@ -33,7 +33,7 @@ class Auth
 
     public function SignIn($getBody)
     {
-        $db_request = $this->con->pdo->prepare('
+        $db_request = Application::$core->con->pdo->prepare('
                                     SELECT id, name, lastname, email, password 
                                     FROM users
                                     WHERE email = :email AND password = :password

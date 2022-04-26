@@ -3,12 +3,13 @@
 
 namespace app\models;
 use \PDO;
+use app\core\Application;
 
 class SendersListModel
 {
     public function SendSendersList()
     {
-        $db_request = $this->con->pdo->prepare('
+        $db_request = Application::$core->con->pdo->prepare('
                                     SELECT id, name, description
                                     FROM senders
         ');

@@ -2,7 +2,6 @@
 /* core/Application.php */
 
 namespace app\core;
-use Dotenv\Dotenv;
 use app\core\Database;
 
 class Application
@@ -11,9 +10,12 @@ class Application
     public Router $router;
     public Request $request;
     public Response $response;
+    public Database $con;
+    
     public static Application $core;
     public Controller $controller;
     public Auth $auth;
+
 
     public function __construct($rootPath)
     {
@@ -25,10 +27,7 @@ class Application
         $this->response = new Response();
         $this->router = new Router($this->request, $this->response);
         $this->auth = new Auth();
-
-        $this->cred = Dotenv::createImmutable(__DIR__ . '/..');
-        $this->cred->load();
-        
+       
         $this->con = new Database();
     }
 

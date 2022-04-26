@@ -21,7 +21,7 @@ class SiteController extends Controller
         $senderslist = new SendersListModel();
         $senderslist->SendSendersList();
         $params = [
-            'name' => 'Ocotpus Site'
+            'senderslist' => $senderslist
         ];
         return $this->render('senderslist', $params);
     }

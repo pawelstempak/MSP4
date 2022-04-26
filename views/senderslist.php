@@ -14,11 +14,16 @@
     </tr>
   </thead>
   <tbody>
+    <?php
+    foreach($params as $key):
+    ?>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <td><?php var_dump($params) ?></td>
+      <td></td>
+      <td></td>
     </tr>
+    <?php
+    endforeach;
+    ?>
   </tbody>
 </table>
