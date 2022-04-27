@@ -5,12 +5,12 @@ namespace app\models;
 use \PDO;
 use app\core\Application;
 
-class SendersListModel
+class SendersModel
 {
     public function SendSendersList()
     {
         $db_request = Application::$core->con->pdo->prepare('
-                                    SELECT id, name, description
+                                    SELECT id, name, email
                                     FROM senders
         ');
         $db_request->execute();

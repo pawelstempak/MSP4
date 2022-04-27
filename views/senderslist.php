@@ -1,15 +1,13 @@
-<?php /* views/home.php */ ?>
+<?php /* views/senderslist.php */ ?>
 <div class="flex-shrink-0 p-3 bg-white">
-<a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-<!-- <img src="images/logo.png" class="bi me-2" width="30" height="30" /> -->
-<span class="fs-5 fw-semibold">Dashboard</span>
-</a>
+<div class="d-flex align-items-center pb-3 mb-3 border-bottom">
+<span class="fs-5 fw-semibold">Senders / <a class="link-secondary" href="/senderslist">List</a></span>
 </div>
-<table class="table">
+<table class="table table-striped table-hover">
   <thead>
     <tr>
       <th scope="col">Name</th>
-      <th scope="col">Descritpion</th>
+      <th scope="col">Email</th>
       <th scope="col">Edit</th>
     </tr>
   </thead>
@@ -18,12 +16,13 @@
     foreach($params['senderslist'] as $key):
     ?>
     <tr>
-      <td><a href="editsender?id=<?php echo $key['id'] ?>"><?php echo $key['name'] ?></a></td>
-      <td><?php echo $key['description'] ?></td>
-      <td><a href="" class="btn btn-secondary btn-sm">Delete</a></td>
+      <td><?php echo $key['name'] ?></td>
+      <td><?php echo $key['email'] ?></td>
+      <td><a href="/editsender/<?php echo $key['id'] ?>" class="btn btn-secondary btn-sml">Edit</a> <a href="" class="btn btn-danger btn-sml">Delete</a></td>
     </tr>
     <?php
     endforeach;
     ?>
   </tbody>
 </table>
+</div>

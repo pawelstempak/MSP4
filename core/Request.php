@@ -8,15 +8,9 @@ class Request
     public function getPath()
     {
         $path = $_SERVER['REQUEST_URI'] ?? '/';
+        $path = substr($path,'1');
         $path = explode('/', $path);
-        // $position = strpos($path,'?');
-        // if($position === false)
-        // {
-        //     echo $path;
-        //     return $path;
-        // }
-        // return substr($path, 0, $position);
-        return '/'.$path[1];
+        return $path;
     }
 
     public function Method()

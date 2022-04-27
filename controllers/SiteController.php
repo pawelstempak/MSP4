@@ -5,10 +5,17 @@ namespace app\controllers;
 use app\core\Controller;
 use app\core\Request;
 use app\core\Auth;
-use app\models\SendersListModel;
+use app\models\SendersModel;
 
 class SiteController extends Controller
 {
+    public $senders;
+
+    public function __construct()
+    {
+        $this->senders = new SendersModel();
+    }
+
     public function logout()
     {
         $user = new Auth();
@@ -18,14 +25,31 @@ class SiteController extends Controller
 
     public function senderslist()
     {   
-        $senderslist = new SendersListModel();
-        $list = $senderslist->SendSendersList();
+        $sendersList = $this->senders->SendSendersList();
         $params = [
-            'senderslist' => $list
+            'senderslist' => $sendersList
         ];
         return $this->render('senderslist', $params);
     }
 
+    public function editsender()
+    {   
+        // $senderslist = new SendersModel();
+        // $list = $senderslist->SendSenders();
+        // $params = [
+        //     'editsender' => $list
+        // ];
+        return $this->render('editsender');
+    }    
+
+    public function newsender(Request $request)
+    {   
+        if($request->isPost())
+        {
+            //$saveNewSender = $this->senders->SaveNewSender();
+        }
+        return $this->render('newsender');
+    }      
 
     public function home()
     {   

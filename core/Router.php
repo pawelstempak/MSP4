@@ -28,7 +28,8 @@ class Router
     public function resolve()
     {
         $params = [];
-        $path = $this->request->getPath();
+        $getPath = $this->request->getPath();
+        $path = '/'.$getPath[0];
         $method = $this->request->Method();  
         $callback = $this->routes[$method][$path] ?? false;
         if($callback === false) 
