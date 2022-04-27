@@ -15,6 +15,8 @@ class SendersListModel
         ');
         $db_request->execute();
         
-        return $db_request->fetchAll(PDO::FETCH_ASSOC);
+        $senderslist = $db_request->fetchAll(PDO::FETCH_ASSOC);
+
+        return $senderslist;
     }
 }

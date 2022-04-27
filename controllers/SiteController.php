@@ -19,9 +19,9 @@ class SiteController extends Controller
     public function senderslist()
     {   
         $senderslist = new SendersListModel();
-        $senderslist->SendSendersList();
+        $list = $senderslist->SendSendersList();
         $params = [
-            'senderslist' => $senderslist
+            'senderslist' => $list
         ];
         return $this->render('senderslist', $params);
     }

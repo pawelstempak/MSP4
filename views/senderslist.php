@@ -15,12 +15,12 @@
   </thead>
   <tbody>
     <?php
-    foreach($params as $key):
+    foreach($params['senderslist'] as $key):
     ?>
     <tr>
-      <td><?php var_dump($params) ?></td>
-      <td></td>
-      <td></td>
+      <td><a href="editsender?id=<?php echo $key['id'] ?>"><?php echo $key['name'] ?></a></td>
+      <td><?php echo $key['description'] ?></td>
+      <td><a href="" class="btn btn-secondary btn-sm">Delete</a></td>
     </tr>
     <?php
     endforeach;
