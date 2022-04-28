@@ -33,11 +33,19 @@ class Request
         $body = [];
         if($this->Method() === 'get')
         {
-            foreach($_GET as $key => $value)
+            $GetPath = $this->getPath();            
+            foreach($GetPath as $key => $value)
             {
-                $body[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+                $body['param'.$key] = filter_var($value, FILTER_SANITIZE_SPECIAL_CHARS);
             }
-        }
+        }        
+        // if($this->Method() === 'get')
+        // {
+        //     foreach($_GET as $key => $value)
+        //     {
+        //         $body[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+        //     }
+        // }
         if($this->Method() === 'post')
         {
             foreach($_POST as $key => $value)

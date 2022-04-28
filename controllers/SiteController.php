@@ -32,21 +32,20 @@ class SiteController extends Controller
         return $this->render('senderslist', $params);
     }
 
-    public function editsender()
+    public function editsender(Request $request)
     {   
-        // $senderslist = new SendersModel();
-        // $list = $senderslist->SendSenders();
-        // $params = [
-        //     'editsender' => $list
-        // ];
-        return $this->render('editsender');
+        $sender = $this->senders->LoadSender($request->getBody());
+        $params = [
+            'sender' => $sender
+        ];
+        return $this->render('editsender', $params);
     }    
 
     public function newsender(Request $request)
     {   
         if($request->isPost())
         {
-            $saveNewSender = $this->senders->SaveNewSender($request->getBody());
+            $this->senders->SaveNewSender($request->getBody());
         }
         return $this->render('newsender');
     }      

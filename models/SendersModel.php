@@ -27,19 +27,33 @@ class SendersModel
                                     VALUES (:name, :email, :description, :signature, :host, :smtp_auth, :username, :password, :port, :from_field, :replyto)
         ');
         return $db_request->execute(
-                array(
-                    "name" => $getBody['name'],
-                    "email" => $getBody['email'],
-                    "description" => $getBody['description'],
-                    "signature" => $getBody['signature'],
-                    "host" => $getBody['host'],
-                    "smtp_auth" => $getBody['smtp_auth'],
-                    "username" => $getBody['username'],
-                    "password" => $getBody['password'],
-                    "port" => $getBody['port'],
-                    "from_field" => $getBody['from_field'], 
-                    "replyto" => $getBody['replyto']
-                )
-            );
+                    array(
+                        "name" => $getBody['name'],
+                        "email" => $getBody['email'],
+                        "description" => $getBody['description'],
+                        "signature" => $getBody['signature'],
+                        "host" => $getBody['host'],
+                        "smtp_auth" => $getBody['smtp_auth'],
+                        "username" => $getBody['username'],
+                        "password" => $getBody['password'],
+                        "port" => $getBody['port'],
+                        "from_field" => $getBody['from_field'], 
+                        "replyto" => $getBody['replyto']
+                    )
+                );
+    }
+    
+    public function LoadSender($getBody)
+    {
+        $db_request = Application::$core->con->pdo->prepare('
+                                    SELECT id, name, email, description, signature, host, smtp_auth, username, password, port, from_field, replyto
+                                    FROM `senders`
+                                    WHERE id = :id
+        ');
+        $db_request->execute(array("id" => $getBody['param1']));
+        
+        $sender = $db_request->fetch(PDO::FETCH_ASSOC);
+
+        return $sender;
     }    
 }
