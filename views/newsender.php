@@ -64,6 +64,6 @@
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div> -->
-  <button type="submit" class="btn btn-secondary">Submit</button>
+  <div class="d-flex justify-content-between"><button type="submit" class="btn btn-secondary">Submit</button> <a href="/senderslist" type="button" class="btn btn-light float-right">Cancel</a></div>
 </form>
 </div>

@@ -36,7 +36,7 @@ class Request
             $GetPath = $this->getPath();            
             foreach($GetPath as $key => $value)
             {
-                $body['param'.$key] = filter_var($value, FILTER_SANITIZE_SPECIAL_CHARS);
+                $body['block'.$key] = filter_var($value, FILTER_SANITIZE_SPECIAL_CHARS);
             }
         }        
         // if($this->Method() === 'get')

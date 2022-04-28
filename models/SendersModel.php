@@ -1,5 +1,5 @@
 <?php
-/* models/SendersListModel.php */
+/* models/SendersModel.php */
 
 namespace app\models;
 use \PDO;
@@ -10,7 +10,7 @@ class SendersModel
     public function LoadSendersList()
     {
         $db_request = Application::$core->con->pdo->prepare('
-                                    SELECT id, name, email
+                                    SELECT id, name, email, description
                                     FROM senders
         ');
         $db_request->execute();
@@ -50,7 +50,7 @@ class SendersModel
                                     FROM `senders`
                                     WHERE id = :id
         ');
-        $db_request->execute(array("id" => $getBody['param1']));
+        $db_request->execute(array("id" => $getBody['block1']));
         
         $sender = $db_request->fetch(PDO::FETCH_ASSOC);
 

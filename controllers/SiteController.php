@@ -6,14 +6,36 @@ use app\core\Controller;
 use app\core\Request;
 use app\core\Auth;
 use app\models\SendersModel;
+use app\models\GroupsModel;
 
 class SiteController extends Controller
 {
     public $senders;
+    public $groups;
 
     public function __construct()
     {
         $this->senders = new SendersModel();
+        $this->groups = new GroupsModel();
+    }
+
+    public function home()
+    {   
+        $params = [
+            'name' => 'Ocotpus Site'
+        ];
+        return $this->render('home', $params);
+    }
+
+    public function contact()
+    {   
+        return $this->render('contact');
+    }
+
+    public function handleContact(Request $request)
+    {
+        $body = $request->getBody();
+        return 'Handling submitting data';
     }
 
     public function logout()
@@ -22,6 +44,24 @@ class SiteController extends Controller
         $user->SignOut();
         header('Location: /');       
     }
+
+    public function groupslist()
+    {   
+        $groupsList = $this->groups->LoadGroupsList();
+        $params = [
+            'groupslist' => $groupsList
+        ];
+        return $this->render('groupslist', $params);
+    }
+
+    public function newgroup(Request $request)
+    {   
+        if($request->isPost())
+        {
+            $this->groups->SaveNewGroup($request->getBody());
+        }
+        return $this->render('newgroup');
+    }    
 
     public function senderslist()
     {   
@@ -48,24 +88,5 @@ class SiteController extends Controller
             $this->senders->SaveNewSender($request->getBody());
         }
         return $this->render('newsender');
-    }      
-
-    public function home()
-    {   
-        $params = [
-            'name' => 'Ocotpus Site'
-        ];
-        return $this->render('home', $params);
-    }
-
-    public function contact()
-    {   
-        return $this->render('contact');
-    }
-
-    public function handleContact(Request $request)
-    {
-        $body = $request->getBody();
-        return 'Handling submitting data';
-    }
+    }  
 }

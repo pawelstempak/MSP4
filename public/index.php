@@ -16,6 +16,9 @@ if($app->isAuth())
 {
     $app->router->get('/', [SiteController::class, 'home']);
     $app->router->get('/logout', [SiteController::class, 'logout']);
+    $app->router->get('/groupslist', [SiteController::class, 'groupslist']);
+    $app->router->get('/newgroup', [SiteController::class, 'newgroup']);
+    $app->router->post('/newgroup', [SiteController::class, 'newgroup']);
     $app->router->get('/senderslist', [SiteController::class, 'senderslist']);
     $app->router->get('/editsender', [SiteController::class, 'editsender']);
     $app->router->post('/editsender', [SiteController::class, 'editsender']);
