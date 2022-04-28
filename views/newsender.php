@@ -58,7 +58,7 @@
   </div>
   <div class="mb-3">
     <label for="inputReplyto" class="form-label">'Reply to' field</label>
-    <input type="text" name="replyro" class="form-control" id="inputReplyto">
+    <input type="text" name="replyto" class="form-control" id="inputReplyto">
   </div>          
   <!-- <div class="mb-3 form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">

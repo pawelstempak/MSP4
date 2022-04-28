@@ -40,7 +40,7 @@ class Auth
         ');
         $db_request->execute(array(
                                     "email" => $getBody['email'],
-                                    "password" => $getBody['password'],
+                                    "password" => $getBody['password']
         ));
         if($db_request->fetch())
         {

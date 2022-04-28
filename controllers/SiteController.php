@@ -25,7 +25,7 @@ class SiteController extends Controller
 
     public function senderslist()
     {   
-        $sendersList = $this->senders->SendSendersList();
+        $sendersList = $this->senders->LoadSendersList();
         $params = [
             'senderslist' => $sendersList
         ];
@@ -46,7 +46,7 @@ class SiteController extends Controller
     {   
         if($request->isPost())
         {
-            //$saveNewSender = $this->senders->SaveNewSender();
+            $saveNewSender = $this->senders->SaveNewSender($request->getBody());
         }
         return $this->render('newsender');
     }      
