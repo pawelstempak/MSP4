@@ -23,14 +23,30 @@ class GroupsModel
     public function SaveNewGroup($getBody)
     {
         $db_request = Application::$core->con->pdo->prepare('
-                                    INSERT INTO `senders` (name)
+                                    INSERT INTO `groups` (name)
                                     VALUES (:name)
         ');
-        return $db_request->execute(
-                    array(
-                        "name" => $getBody['name']
-                    )
-                );
+        $db_request->execute(
+            array(
+                "name" => $getBody['name']
+            )
+        );
+        $db_request = Application::$core->con->pdo->prepare('
+                                    SELECT LAST_INSERT_ID()
+        ');
+        $db_request->execute();
+        $db_response = $db_request->fetch();
+        $lastinsertid = $db_response['LAST_INSERT_ID()'];
+        
+        $importfield = explode(' ',$getBody['importfield']);
+        $prepared_sql = 'INSERT INTO `emails` (email, id_group) VALUES';
+        foreach($importfield as $key)
+        {
+            $prepared_sql .= ' ("'.$key.'", "'.$lastinsertid.'"),';
+        }
+        $prepared_sql = substr($prepared_sql,0,strlen($prepared_sql)-1);
+        $db_request = Application::$core->con->pdo->prepare($prepared_sql);
+        $db_request->execute();
     }
     
     public function LoadSender($getBody)
