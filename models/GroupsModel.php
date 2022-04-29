@@ -38,7 +38,7 @@ class GroupsModel
         $db_response = $db_request->fetch();
         $lastinsertid = $db_response['LAST_INSERT_ID()'];
         
-        $importfield = explode(' ',$getBody['importfield']);
+        $importfield = explode(' ',str_replace(PHP_EOL, ' ', str_replace('&#13;&#10;', ' ', $getBody['importfield'])));
         $prepared_sql = 'INSERT INTO `emails` (email, id_group) VALUES';
         foreach($importfield as $key)
         {

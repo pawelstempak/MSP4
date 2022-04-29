@@ -35,8 +35,8 @@
               <div class="collapsec" id="home-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                   <li><a href="/" class="link-dark rounded">Dashboard</a></li>
-                  <li><a href="#" class="link-dark rounded">Mailing</a></li>
-                  <li><a href="#" class="link-dark rounded">HTML Newsletter</a></li>
+                  <li><a href="newmailing" class="link-dark rounded">Mailing</a></li>
+                  <li><a href="newnewsletter" class="link-dark rounded">HTML Newsletter</a></li>
                 </ul>
               </div>
             </li>

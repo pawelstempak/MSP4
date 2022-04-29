@@ -45,6 +45,11 @@ class SiteController extends Controller
         header('Location: /');       
     }
 
+    public function newmailing()
+    {   
+        return $this->render('newmailing');
+    }
+
     public function groupslist()
     {   
         $groupsList = $this->groups->LoadGroupsList();

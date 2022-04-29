@@ -1,9 +1,9 @@
-<?php /* views/newgroup.php */ ?>
+<?php /* views/newsender.php */ ?>
 <div class="flex-shrink-0 p-3 bg-white">
 <div class="d-flex align-items-center pb-3 mb-3 border-bottom">
 <span class="fs-6 fw-semibold">Groups <i class="bi bi-arrow-right-short"></i> <a class="link-secondary" href="newgroup">Import</a></span>
 </div>
-<h4>Create new e-mails group</h4><br />
+<h4>Create new mailing</h4><br />
 <form action="" method="post">
   <div class="mb-3">
     <label for="inputName" class="form-label">Group name</label>
