@@ -47,19 +47,5 @@ class GroupsModel
         $prepared_sql = substr($prepared_sql,0,strlen($prepared_sql)-1);
         $db_request = Application::$core->con->pdo->prepare($prepared_sql);
         $db_request->execute();
-    }
-    
-    public function LoadSender($getBody)
-    {
-        $db_request = Application::$core->con->pdo->prepare('
-                                    SELECT id, name, email, description, signature, host, smtp_auth, username, password, port, from_field, replyto
-                                    FROM `senders`
-                                    WHERE id = :id
-        ');
-        $db_request->execute(array("id" => $getBody['block1']));
-        
-        $sender = $db_request->fetch(PDO::FETCH_ASSOC);
-
-        return $sender;
-    }    
+    }   
 }

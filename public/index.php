@@ -1,6 +1,10 @@
 <?php
 /* public/index.php */
 
+// echo "<pre>";
+// var_dump($params);
+// echo "</pre>";
+
 use Dotenv\Dotenv;
 use app\core\Application;
 use app\controllers\SiteController;

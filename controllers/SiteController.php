@@ -47,7 +47,19 @@ class SiteController extends Controller
 
     public function newmailing()
     {   
-        return $this->render('newmailing');
+        $groupsList = $this->groups->LoadGroupsList();
+        $params1 = [
+            'groupslist' => $groupsList
+        ];        
+        $sendersList = $this->senders->LoadSendersList();
+        $params2 = [
+            'senderslist' => $sendersList
+        ];      
+        $params = array_merge($params1,$params2);  
+        // echo "<pre>";
+        // var_dump($params);
+        // echo "</pre>";
+        return $this->render('newmailing', $params);
     }
 
     public function groupslist()
@@ -55,7 +67,7 @@ class SiteController extends Controller
         $groupsList = $this->groups->LoadGroupsList();
         $params = [
             'groupslist' => $groupsList
-        ];
+        ];        
         return $this->render('groupslist', $params);
     }
 
