@@ -7,16 +7,19 @@ use app\core\Request;
 use app\core\Auth;
 use app\models\SendersModel;
 use app\models\GroupsModel;
+use app\models\MailingModel;
 
 class SiteController extends Controller
 {
     public $senders;
     public $groups;
+    public $mailing;
 
     public function __construct()
     {
         $this->senders = new SendersModel();
         $this->groups = new GroupsModel();
+        $this->mailing = new MailingModel();
     }
 
     public function home()
@@ -45,8 +48,12 @@ class SiteController extends Controller
         header('Location: /');       
     }
 
-    public function newmailing()
+    public function newmailing(Request $request)
     {   
+        if($request->isPost())
+        {
+            $this->mailing->SendNewMailing($request->getBody());
+        }        
         $groupsList = $this->groups->LoadGroupsList();
         $params1 = [
             'groupslist' => $groupsList
@@ -56,9 +63,6 @@ class SiteController extends Controller
             'senderslist' => $sendersList
         ];      
         $params = array_merge($params1,$params2);  
-        // echo "<pre>";
-        // var_dump($params);
-        // echo "</pre>";
         return $this->render('newmailing', $params);
     }
 

@@ -7,7 +7,7 @@
 <form action="" method="post">
   <div class="mb-3">
       <label for="selectSenderField" class="form-label">Chose sender account</label>
-      <select class="form-select" name="sender" aria-label="Default select example" id="selectSenderField">
+      <select class="form-select" name="id_sender" aria-label="Default select example" id="selectSenderField">
       <option selected>Select sender</option>
       <?php foreach($params['senderslist'] as $key): 
       ?>
@@ -19,7 +19,7 @@
   </div>
   <div class="mb-3">
       <label for="selectReciepientsField" class="form-label">Chose mailing reciepients</label>
-      <select class="form-select" name="reciepients" aria-label="Default select example" id="selectReciepientsField">
+      <select class="form-select" name="id_group" aria-label="Default select example" id="selectReciepientsField">
       <option selected>Select reciepients group</option>
       <?php foreach($params['groupslist'] as $key): 
       ?>
@@ -35,7 +35,7 @@
   </div>     
   <div class="mb-3">
     <label for="inputEmailContent" class="form-label">Email content</label>
-    <textarea name="emailcontent" class="form-control" id="inputEmailContent" rows="10"></textarea><br />
+    <textarea name="content" class="form-control" id="inputEmailContent" rows="10"></textarea><br />
   <div class="d-flex justify-content-between"><button type="submit" class="btn btn-secondary">Submit</button> <a href="grpupslist" type="button" class="btn btn-light float-right">Cancel</a></div>
 </form>
 </div>
