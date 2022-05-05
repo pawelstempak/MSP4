@@ -19,6 +19,6 @@
       </label>
     </div> -->
     <button class="w-50 btn btn-secondary" type="submit">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">&copy; Mailing Service Panel 4.0.1</p>
+    <p class="mt-5 mb-3 text-muted">&copy;  MSP4 0.1.1</p>
   </form>
 </main>

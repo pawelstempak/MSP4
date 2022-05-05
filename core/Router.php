@@ -33,7 +33,8 @@ class Router
         $method = $this->request->Method();  
         $callback = $this->routes[$method][$path] ?? false;
         if($callback === false) 
-        {
+        {   
+            Application::$core->layout = 'auth';
             $this->response->setStatusCode(404);
             return $this->renderView('_404', $params);
         }       
@@ -52,7 +53,10 @@ class Router
 
     protected function layoutContent()
     {
-        $layout = Application::$core->controller->layout;
+        $layout = Application::$core->layout;
+        if(Application::$core->controller) {
+            $layout = Application::$core->controller->layout;
+        }
         ob_start();
         include_once Application::$ROOT_DIR . "/views/layouts/$layout.php";
         return ob_get_clean();

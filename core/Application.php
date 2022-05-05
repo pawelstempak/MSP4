@@ -7,13 +7,14 @@ use app\core\Database;
 class Application
 {
     public static string $ROOT_DIR;
+    public string $layout = 'main';
     public Router $router;
     public Request $request;
     public Response $response;
     public Database $con;
     
     public static Application $core;
-    public Controller $controller;
+    public ?Controller $controller = null;
     public Auth $auth;
 
 
