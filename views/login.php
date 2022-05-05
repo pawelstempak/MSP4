@@ -13,11 +13,11 @@
       <label for="floatingPassword">Password</label>
     </div>
 
-    <div class="checkbox mb-3">
+    <!-- <div class="checkbox mb-3">
       <label>
         <input type="checkbox" value="remember-me"> Remember me
       </label>
-    </div>
+    </div> -->
     <button class="w-50 btn btn-secondary" type="submit">Sign in</button>
     <p class="mt-5 mb-3 text-muted">&copy; Mailing Service Panel 4.0.1</p>
   </form>
