@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <base href="http://localhost:8080/">
+    <base href="<?= $_ENV['HOST'] ?>.'">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">

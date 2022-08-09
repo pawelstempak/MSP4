@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  php-env:
+    build: .
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - 8000:80
+
+  ${DB_URL}:
+    image: mysql:latest
+    ports:
+      - 3306:3306    
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}    
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+      MYSQL_ROOT_PASSWORD: ${DB_PASS}
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    restart: always
+    ports:
+      - 8001:80
+    environment:
+      - PMA_ARBITRARY=1
